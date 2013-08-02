@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  until: 2013-07-31
+  done: 
+  place: 9.99
+
+two:
+  title: MyString
+  until: 2013-07-31
+  done: 
+  place: 9.99
