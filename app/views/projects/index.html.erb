@@ -6,6 +6,16 @@ Your Projects
 </head>
 <body>
 <% @projects.each do |p| %>
-	<p><%= p.title %></p>
+	<p>
+		<%= p.title %>
+		<%= link_to "edit", edit_project_path(p), remote: true %>
+		<%= link_to "delete", project_path(p), remote: true, method: :delete %>
+	</p>
+	<% p.tasks.each do |t| %>
+		<p><%= t.title %>
+			<%= link_to "edit", edit_project_task_path(p,t), remote: true %>
+			<%= link_to "delete", project_task_path(p,t), remote: true, method: :delete %>
+        </p>
+	<%end%>
 <%end%>
 </body>
