@@ -1,27 +1,5 @@
-<html>
-<head>
-<title>
-Your Projects
-</title>
-</head>
-<body>
-<% @projects.reverse.each do |p| %>
-	<p id="project<%=p.id%>">
-		<%= p.title %>
-		<%= link_to "edit", edit_project_path(p) %>
-		<%= link_to "delete", project_path(p), method: :delete %>
-	</p>
-	<%= form_for [p, @new_task] do |f| %>
-		<%= f.text_field :title %>
-		<%= f.hidden_field :project_id, value: p.id %>
-		<%= f.submit "Create task" %>
-	<%end%>
-	<% p.tasks.reverse.each do |t| %>
-		<p id="task<%=t.id%>"><%= t.title %>
-			<%= link_to "edit", edit_project_task_path(p,t) %>
-			<%= link_to "delete", project_task_path(p, t), method: 'delete' %>
-        </p>
-	<%end%>
-	<br><br><br>
-<%end%>
-</body>
+<%= render 'projects' %>
+
+<%= render 'new_project_form' %>
+
+

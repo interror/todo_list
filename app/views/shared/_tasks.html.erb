@@ -1,0 +1,5 @@
+<div class="tasks">
+	<% project.tasks.order('priority DESC').each do |t| %>
+		<%= render 'shared/task', project: project, t: t %>
+	<%end%>
+</div>

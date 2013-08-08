@@ -5,12 +5,22 @@ class Task < ActiveRecord::Base
 	before_create :init_priority
 
 	validates :title, presence: true
-	validates :priority, :title, uniqueness: true
+	validates_uniqueness_of :title, scope: :project_id
 
-	def raise_priority
+	def up
+		if victim = Task.where(project_id: self.project_id, priority: (self.priority+1)).first
+			self.priority, victim.priority = victim.priority, self.priority
+			self.save
+			victim.save
+		end
 	end
 
-	def lower_priority
+	def down
+		if victim = Task.where(project_id: self.project_id, priority: (self.priority-1)).first
+			self.priority, victim.priority = victim.priority, self.priority
+			self.save
+			victim.save
+		end
 	end
 
 	private

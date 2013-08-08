@@ -1,0 +1,15 @@
+<div class='project'>
+
+	<span class='project_title'><%= project.title %></span>
+	<%= link_to "edit", edit_project_path(project), class: 'edit_project_link' %>
+	<%= link_to "delete", project_path(project), remote: true, method: :delete, class: "delete_project" %>
+
+
+	<%= render 'edit_project_form', project: project %>
+
+	<%= render 'shared/new_task_form', project: project %>
+
+	<%= render 'shared/tasks', project: project %>
+
+	<br><br><br>
+</div>

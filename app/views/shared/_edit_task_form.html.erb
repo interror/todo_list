@@ -1,0 +1,4 @@
+<%= form_for [task.project, task], html: {class: "edit_task invisible"}, remote: true do |f| %>
+	<%= f.text_field :title %>
+	<%= f.submit "Update task" %>
+<%end%>

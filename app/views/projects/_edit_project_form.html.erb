@@ -1,0 +1,4 @@
+<%= form_for project, html: {class: "invisible edit_project"}, remote: true do |f| %>
+	<%= f.text_field :title %>
+	<%= f.submit "Update project" %>
+<%end%>

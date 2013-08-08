@@ -1,0 +1,5 @@
+<%= form_for [project, @new_task], remote: true do |form| %>
+		<%= form.text_field :title %>
+		<%= form.hidden_field :project_id, value: project.id %>
+		<%= form.submit "Create task" %>
+<%end%>
