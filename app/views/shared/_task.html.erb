@@ -1,9 +1,12 @@
 <div class="task">
 	<input type="checkbox" <%= "checked" if t.is_done %> class="done<%=" done_task" if t.is_done%>" id="<%=t.id%>">
-	<span class="task_title" ><%= t.title %></span>
+	<%= form_for [t.project,t], html: {class: "edit_task"}, remote: true do |f| %>
+	<%= f.text_field :title, class: "invisible task_title_input", id: "text_task#{t.id}" %>
+	<label for="<%="text_task#{t.id}"%>"><%=t.title%></label>
+	<input class="deadline" name="task[deadline]" type="text" value="<%=t.deadline%>" />
+	<%end%>
 	<%= link_to "up", up_project_task_path(project, t), class: "up", remote: true%>
 	<%= link_to "down", down_project_task_path(project, t), class: "down", remote: true%>
 	<%= link_to "edit", edit_project_task_path(project, t), class: "edit_task_link" %>
 	<%= link_to "delete", project_task_path(project, t),remote: true, method: 'delete', class: "delete_task" %>
-	<%= render 'shared/edit_task_form', task: t %>
 </div>

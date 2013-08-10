@@ -1,11 +1,12 @@
 <div class='project'>
 
-	<span class='project_title'><%= project.title %></span>
+	<%= form_for project, html: {class: "edit_project"}, remote: true do |f| %>
+	<%= f.text_field :title, class: "invisible", id: "text#{project.id}" %>
+	<label for="<%="text#{project.id}"%>"><%=project.title%></label>
+	<%end%>
+
 	<%= link_to "edit", edit_project_path(project), class: 'edit_project_link' %>
 	<%= link_to "delete", project_path(project), remote: true, method: :delete, class: "delete_project" %>
-
-
-	<%= render 'edit_project_form', project: project %>
 
 	<%= render 'shared/new_task_form', project: project %>
 

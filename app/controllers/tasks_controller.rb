@@ -16,7 +16,7 @@ class TasksController < ApplicationController
 		@task = Task.find(params[:id])
 		@task.is_done ^= true
 		@task.save!
-		render nothing: true
+		render nothing: true, status: "ok"
 	end
 
 	def destroy
@@ -40,9 +40,9 @@ class TasksController < ApplicationController
 
 	def update
 		if Task.find(params[:id]).update_attributes(task_params)
-			redirect_to root_url
+			render nothing: true
 		else
-			redirect_to edit_project_task_path(params)
+			#Implement sending error header and procesing it in javascript event listener
 		end
 	end
 
