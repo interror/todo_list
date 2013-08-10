@@ -5,9 +5,8 @@ gem 'rails'
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
 gem 'faker'
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'sqlite3'
@@ -31,7 +30,6 @@ group :test do
   gem 'libnotify'
   gem 'guard-spork'
   gem 'spork'
-  gem 'factory_girl_rails'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
 end
