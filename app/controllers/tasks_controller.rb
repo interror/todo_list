@@ -1,12 +1,12 @@
 class TasksController < ApplicationController
 	def up
 		Task.where(id:params[:id]).first.up
-		redirect_to root_url
+		render nothing: true
 	end
 
 	def down
 		Task.where(id:params[:id]).first.down
-		redirect_to root_url
+		render nothing: true
 	end
 
 	def show

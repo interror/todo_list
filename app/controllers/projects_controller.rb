@@ -1,12 +1,16 @@
 class ProjectsController < ApplicationController
 	def index
-		@projects=Project.all.to_a
-		@new_task = Task.new
-		@new_project = Project.new
+		if current_user 
+			@projects=current_user.projects.to_a
+			@new_task = Task.new
+			@new_project = Project.new
+		else
+			redirect_to log_in_path
+		end
 	end
 
 	def create
-		@project = Project.create!(project_params)
+		@project = current_user.projects.create!(project_params)
 		@new_task = Task.new
 		send_ajax_respond and return if request.xhr?
 		redirect_to root_url
@@ -26,7 +30,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def update
-		if Project.find(params[:id]).update_attributes(project_params)
+		if current_user.projects.find(params[:id]).update_attributes(project_params)
 			render nothing: true
 		else
 			

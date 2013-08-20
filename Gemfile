@@ -3,7 +3,8 @@ ruby "2.0.0"
 
 gem 'rails'
 gem 'bootstrap-sass'
-gem 'bcrypt-ruby'
+gem "bootstrap-x-editable-rails"
+gem "bcrypt-ruby", require: "bcrypt"
 gem 'faker'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

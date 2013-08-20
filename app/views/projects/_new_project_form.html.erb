@@ -1,4 +1,6 @@
 <%= form_for @new_project, remote: true do |f| %>
+<div class="input-append">
 	<%= f.text_field :title %>
-	<%= f.submit %>
+	<button type="submit" class="btn">Create Project</button>
+</div>
 <%end%>
